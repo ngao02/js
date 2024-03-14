@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./b6.css" />
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <img
+        src="https://www.elle.vn/wp-content/uploads/2017/07/25/hinh-anh-dep-1.jpg"
+      />
+      <img
+        src="https://img.pikbest.com/ai/illus_our/20230418/64e0e89c52dec903ce07bb1821b4bcc8.jpg!w700wp"
+      />
+      <img
+        src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045-2.jpg"
+      />
+    </div>
+    <button id="up" class="btn-up" onclick="scrollView()">UP</button>
+
+    <script>
+      const btnUp = document.querySelector(".btn-up");
+
+      window.addEventListener("scroll", function () {
+        btnUp.style.display = self.pageYOffset > 20 ? "block" : "none";
+      });
+
+      function scrollView() {
+        var set = self.pageYOffset;
+        var interval = setInterval(() => {
+          var currentHeight = self.pageYOffset;
+          currentHeight -= set * 0.05;
+          window.scrollTo(0, currentHeight);
+          if (currentHeight <= 0) {
+            clearInterval(interval);
+          }
+        }, 15);
+      }
+    </script>
+  </body>
+</html>

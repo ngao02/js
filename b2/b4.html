@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="input" type="text" placeholder="mm/dd/yyyy hh:mm:ss" />
+    <button onclick="startCountdown()">START</button>
+    <p id="time"></p>
+  </body>
+  <script>
+    function run() {
+      const inputDate = new Date(
+        document.getElementById("input").value
+      ).getTime();
+      const now = new Date().getTime();
+      const timeRest = inputDate - now;
+      if (timeRest <= 0) {
+        clearInterval(start);
+        document.getElementById("time").innerHTML =
+          "Thời gian đếm ngược đã kết thúc";
+      } else {
+        var day = Math.floor(timeRest / (1000 * 60 * 60 * 24));
+        var hh = Math.floor(
+          (timeRest % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var mm = Math.floor((timeRest % (1000 * 60 * 60)) / (1000 * 60));
+        var ss = Math.floor((timeRest % (1000 * 60)) / 1000);
+        document.getElementById("time").innerHTML =
+          day + "d " + hh + "h " + mm + "m " + ss + "s";
+      }
+    }
+    function startCountdown() {
+      start = setInterval(run, 1000);
+    }
+  </script>
+</html>
